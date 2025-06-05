@@ -1,3 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="app_name">final project</string>
+    <string name="app_name1">财务收支记账本</string>
+    <string name="income_label">收入</string>
+    <string name="expense_label">支出</string>
+    <string name="income_record">收入记录</string>
+    <string name="expense_record">支出记录</string>
+    <string name="balance">收支平衡</string>
+    <string name="consumption_analysis">消费分析</string>
+    <string name="savings_suggestion">储蓄建议</string>
+    <string name="income_1">+1\n 100元以下</string>
+    <string name="income_2">+2\n 100–500元</string>
+    <string name="income_3">+3\n 500元以上</string>
+    <string name="expense_1">-1\n 100元以下</string>
+    <string name="expense_2">–2\n 100–500元</string>
+    <string name="expense_3">-3\n 500元以上</string>
+    <string name="prompt_record_finance">请记录你的收入和支出</string>
+    <string name="prompt_suggestion">记录收支情况后将显示建议</string>
+    <string name="income_added">已记录收入</string>
+    <string name="expense_added">已记录支出</string>
+    <string name="analysis_good">你的收支状况非常好，有较多的储蓄！</string>
+    <string name="analysis_ok">你的收支状况良好，有一定的储蓄能力！</string>
+    <string name="analysis_neutral">你的收支基本平衡。</string>
+    <string name="analysis_warning">你的支出略大于收入，需要注意控制消费。</string>
+    <string name="analysis_bad">你的支出明显大于收入，财务状况需要改善。</string>
+    <string name="suggestion_good">可以考虑将部分储蓄进行理财，让资产增值。同时继续保持理性消费的习惯。</string>
+    <string name="suggestion_ok">可以制定一个储蓄计划，每月固定存下一部分钱。同时注意控制非必要支出。</string>
+    <string name="suggestion_neutral">可以开始关注消费细节，看看是否有可以节省的地方，逐步建立储蓄习惯。</string>
+    <string name="suggestion_warning">建议记录一周的详细消费，找出不必要的支出项目，制定消费预算。</string>
+    <string name="suggestion_bad">建议暂时停止非必要消费，制定严格的消费计划。可以尝试记账一段时间，了解自己的消费习惯。</string>
+
 </resources>

@@ -1,10 +1,249 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".ui.theme.finalhomework">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 标题 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp" />
+
+    <!-- 中间计分区域 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp">
+
+        <!-- 左侧收入区域 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="#E8F5E9"
+            android:padding="16dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/income_record"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/income_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp"
+                tools:ignore="ExtraText">
+
+                <Button
+                    android:id="@+id/income_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:minHeight="64dp"
+                    android:padding="12dp"
+                    android:text="@string/income_1"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <Button
+                    android:id="@+id/income_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:minHeight="64dp"
+                    android:padding="12dp"
+                    android:text="@string/income_2"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+
+                <!-- 收入区域按钮 -->
+                <Button
+                    android:id="@+id/income_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:minHeight="64dp"
+                    android:padding="12dp"
+                    android:text="@string/income_3"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#CCCCCC" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="#FFEBEE"
+            android:padding="16dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/expense_record"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/expense_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                tools:ignore="HardcodedText" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp"
+                style="?android:attr/buttonBarStyle">
+
+                <Button
+                    android:id="@+id/expense_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:minHeight="64dp"
+                    android:padding="12dp"
+                    android:text="@string/expense_1"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+
+                <Button
+                    android:id="@+id/expense_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:minHeight="64dp"
+                    android:padding="12dp"
+                    android:text="@string/expense_2"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+
+                <Button
+                    android:id="@+id/expense_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:minHeight="64dp"
+                    android:padding="12dp"
+                    android:text="@string/expense_3"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- 底部分析 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        android:layout_marginTop="16dp"
+        android:elevation="2dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/balance"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥ 0"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/consumption_analysis"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:id="@+id/analysis_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/prompt_record_finance"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/savings_suggestion"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:id="@+id/suggestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/prompt_suggestion"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
