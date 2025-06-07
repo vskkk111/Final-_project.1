@@ -3,6 +3,7 @@ package com.example.finalproject.ui.theme;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -10,6 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.example.finalproject.HistoryActivity;
 import com.example.finalproject.R;
 
 import java.text.SimpleDateFormat;
@@ -19,7 +22,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-
 
 public class finalhomework extends AppCompatActivity {
 
@@ -39,8 +41,8 @@ public class finalhomework extends AppCompatActivity {
     private TextView suggestionText;
     private Spinner categorySpinner;
 
-    private final List<FinanceRecord> financeRecords = new ArrayList<>();
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
+    public final List<FinanceRecord> financeRecords = new ArrayList<>();
+    public final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class finalhomework extends AppCompatActivity {
         analysisResultText = findViewById(R.id.analysis_result);
         suggestionText = findViewById(R.id.suggestion);
         categorySpinner = findViewById(R.id.category_spinner);
+
 
         // 初始化消费类别统计
         for (String category : categories) {
@@ -87,9 +90,12 @@ public class finalhomework extends AppCompatActivity {
         expense2Btn.setOnClickListener(v -> addExpense(2, getString(R.string.expense_2)));
         expense3Btn.setOnClickListener(v -> addExpense(3, getString(R.string.expense_3)));
 
-        // 历史记录按钮
+        // 历史记录按钮 - 修改为跳转到独立页面
         Button historyBtn = findViewById(R.id.history_btn);
-        historyBtn.setOnClickListener(v -> showHistory());
+        historyBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(finalhomework.this, HistoryActivity.class);
+            startActivity(intent);
+        });
     }
 
     // 添加收入记录
@@ -181,37 +187,12 @@ public class finalhomework extends AppCompatActivity {
         }
     }
 
-    // 显示历史记录
-    private void showHistory() {
-        if (financeRecords.isEmpty()) {
-            Toast.makeText(this, R.string.no_records, Toast.LENGTH_SHORT).show();
-            return;
-
-        }
-
-        StringBuilder history = new StringBuilder();
-        for (FinanceRecord record : financeRecords) {
-            String type = record.isIncome ?
-                    getString(R.string.income_label) :
-                    getString(R.string.expense_label);
-            type += " ¥" + Math.abs(record.amount) + " (" + record.amountRange + ")";
-            type += " - " + getString(R.string.category_label) + ": " + record.category;
-
-            history.append(dateFormat.format(record.time))
-                    .append(" - ")
-                    .append(type)
-                    .append("\n");
-        }
-
-        Toast.makeText(this, history.toString(), Toast.LENGTH_LONG).show();
-    }
-
     // 财务记录
-    private class FinanceRecord {
-        Date time;
-        int amount;
-        String amountRange;
-        boolean isIncome;
-        String category;
+    public class FinanceRecord {
+        public Date time;
+        public int amount;
+        public String amountRange;
+        public boolean isIncome;
+        public String category;
     }
 }

@@ -273,9 +273,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/financial_history"
-                android:padding="12dp"
-                app:backgroundTint="#1976D2"
-                app:cornerRadius="4dp" />
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#2196F3"
+                android:padding="16dp"
+                android:layout_marginTop="24dp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
