@@ -2,6 +2,7 @@ package com.example.finalproject.ui.theme;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+
 public class finalhomework extends AppCompatActivity {
 
     // 财务计分相关变量
@@ -28,6 +30,7 @@ public class finalhomework extends AppCompatActivity {
 
     // 消费类别统计
     private final Map<String, Integer> categoryStats = new HashMap<>();
+    private final String[] categories = {"饮食", "购物", "交通", "娱乐", "学习", "其他"};
 
     private TextView incomeScoreText;
     private TextView expenseScoreText;
@@ -36,8 +39,8 @@ public class finalhomework extends AppCompatActivity {
     private TextView suggestionText;
     private Spinner categorySpinner;
 
-    private List<FinanceRecord> financeRecords = new ArrayList<>();
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
+    private final List<FinanceRecord> financeRecords = new ArrayList<>();
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +52,22 @@ public class finalhomework extends AppCompatActivity {
         balanceText = findViewById(R.id.balance);
         analysisResultText = findViewById(R.id.analysis_result);
         suggestionText = findViewById(R.id.suggestion);
+        categorySpinner = findViewById(R.id.category_spinner);
+
+        // 初始化消费类别统计
+        for (String category : categories) {
+            categoryStats.put(category, 0);
+        }
 
         // 初始化分数显示
         updateScoreDisplay();
         updateAnalysisAndSuggestion();
+
+        // 设置消费类别下拉框
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(adapter);
 
         // 收入按钮事件
         Button income1Btn = findViewById(R.id.income_1);
@@ -72,6 +87,9 @@ public class finalhomework extends AppCompatActivity {
         expense2Btn.setOnClickListener(v -> addExpense(2, getString(R.string.expense_2)));
         expense3Btn.setOnClickListener(v -> addExpense(3, getString(R.string.expense_3)));
 
+        // 历史记录按钮
+        Button historyBtn = findViewById(R.id.history_btn);
+        historyBtn.setOnClickListener(v -> showHistory());
     }
 
     // 添加收入记录
@@ -136,6 +154,7 @@ public class finalhomework extends AppCompatActivity {
     }
 
     // 更新分数显示
+    @SuppressLint("SetTextI18n")
     private void updateScoreDisplay() {
         incomeScoreText.setText(String.valueOf(incomeScore));
         expenseScoreText.setText(String.valueOf(expenseScore));
@@ -162,6 +181,32 @@ public class finalhomework extends AppCompatActivity {
         }
     }
 
+    // 显示历史记录
+    private void showHistory() {
+        if (financeRecords.isEmpty()) {
+            Toast.makeText(this, R.string.no_records, Toast.LENGTH_SHORT).show();
+            return;
+
+        }
+
+        StringBuilder history = new StringBuilder();
+        for (FinanceRecord record : financeRecords) {
+            String type = record.isIncome ?
+                    getString(R.string.income_label) :
+                    getString(R.string.expense_label);
+            type += " ¥" + Math.abs(record.amount) + " (" + record.amountRange + ")";
+            type += " - " + getString(R.string.category_label) + ": " + record.category;
+
+            history.append(dateFormat.format(record.time))
+                    .append(" - ")
+                    .append(type)
+                    .append("\n");
+        }
+
+        Toast.makeText(this, history.toString(), Toast.LENGTH_LONG).show();
+    }
+
+    // 财务记录
     private class FinanceRecord {
         Date time;
         int amount;

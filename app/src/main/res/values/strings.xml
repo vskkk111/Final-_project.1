@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">final project</string>
     <string name="app_name1">财务收支记账本</string>
     <string name="income_label">收入</string>
     <string name="expense_label">支出</string>
@@ -9,6 +8,8 @@
     <string name="balance">收支平衡</string>
     <string name="consumption_analysis">消费分析</string>
     <string name="savings_suggestion">储蓄建议</string>
+    <string name="financial_history">查看财务记录历史</string>
+    <string name="category_label">支出类别:</string>
     <string name="income_1">+1\n 100元以下</string>
     <string name="income_2">+2\n 100–500元</string>
     <string name="income_3">+3\n 500元以上</string>
@@ -19,6 +20,7 @@
     <string name="prompt_suggestion">记录收支情况后将显示建议</string>
     <string name="income_added">已记录收入</string>
     <string name="expense_added">已记录支出</string>
+    <string name="no_records">暂无财务记录</string>
     <string name="analysis_good">你的收支状况非常好，有较多的储蓄！</string>
     <string name="analysis_ok">你的收支状况良好，有一定的储蓄能力！</string>
     <string name="analysis_neutral">你的收支基本平衡。</string>
