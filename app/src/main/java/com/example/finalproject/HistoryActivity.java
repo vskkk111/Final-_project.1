@@ -1,15 +1,10 @@
 package com.example.finalproject;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.widget.ListView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.finalproject.ui.theme.finalhomework;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
@@ -24,15 +19,15 @@ public class HistoryActivity extends AppCompatActivity {
         historyListView = findViewById(R.id.history_list_view);
         noRecordsText = findViewById(R.id.no_records_text);
 
-        // 从 Intent 中获取数据
-        ArrayList<Parcelable> records =
-                getIntent().getParcelableArrayListExtra("records");
+        // 通过主 Activity 静态变量获取数据
+        List<finalhomework.FinanceRecord> records = finalhomework.financeRecords;
 
+        // 关键：处理 records 为 null 的情况
         if (records == null || records.isEmpty()) {
             historyListView.setVisibility(ListView.GONE);
             noRecordsText.setVisibility(TextView.VISIBLE);
         } else {
-            // 设置适配器
+            // 设置适配器（需自定义 FinanceAdapter）
             FinanceAdapter adapter = new FinanceAdapter(this, records);
             historyListView.setAdapter(adapter);
         }

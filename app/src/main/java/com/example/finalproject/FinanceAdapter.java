@@ -1,28 +1,24 @@
 package com.example.finalproject;
 
 import android.content.Context;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.example.finalproject.ui.theme.finalhomework;
-
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class FinanceAdapter extends ArrayAdapter<finalhomework.FinanceRecord> {
     private final Context context;
     private final SimpleDateFormat dateFormat;
 
-    public FinanceAdapter(@NonNull Context context, ArrayList<Parcelable> records) {
-        super(context, R.layout.item_finance_record);
+    public FinanceAdapter(@NonNull Context context, List<finalhomework.FinanceRecord> records) {
+        super(context, R.layout.item_finance_record, records);
         this.context = context;
         dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
     }
